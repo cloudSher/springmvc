@@ -17,6 +17,7 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -160,6 +161,16 @@ public class TestController {
 		throw new RuntimeException(".....run =====");
 //		return "success";
 	}
+
+
+	@RequestMapping("/request")
+	@ResponseBody
+	public String testHttpServletRequest(HttpServletRequest request){
+		String req = request.getParameter("a");
+		return req;
+	}
+
+
 
 
 }
