@@ -70,9 +70,17 @@
 		</init-param>
         <load-on-startup>1</load-on-startup>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>myServlet</servlet-name>
+		<servlet-class>com.springapp.mvc.servlet.MyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myServlet</servlet-name>
+		<url-pattern>/my</url-pattern>
 	</servlet-mapping>
 </web-app>
