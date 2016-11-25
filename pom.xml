@@ -113,11 +113,11 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>servlet-api</artifactId>-->
+            <!--<version>2.5</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -371,11 +371,11 @@
         </dependency>
 
         <!--datanucleus-->
-        <dependency>
-            <groupId>com.eternity.storage</groupId>
-            <artifactId>storage-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->x
+            <!--<groupId>com.eternity.storage</groupId>-->
+            <!--<artifactId>storage-service</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
 
         <!--atomikos-->
@@ -396,7 +396,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <finalName>springmvc</finalName>
         <plugins>

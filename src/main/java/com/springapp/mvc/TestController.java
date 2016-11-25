@@ -1,9 +1,8 @@
 package com.springapp.mvc;
 
-import com.eternity.storage.jdo.model.Account;
-import com.eternity.storage.jdo.model.Loggin;
 import com.springapp.mvc.mapper.CallerMapper;
 import com.springapp.mvc.model.Demo;
+import com.springapp.mvc.service.CallService;
 import com.springapp.mvc.validator.MyValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,14 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -125,29 +119,30 @@ public class TestController {
 //	}
 
 
-	@RequestMapping("/jdo")
-	@ResponseBody
-	public String jdo_test(){
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("Tutorial");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Account account = new Account();
-		account.setId("222");
-		account.setName("account22");
-		Loggin loggin = new Loggin();
-		loggin.setLogin("333");
-		loggin.setPassword("444");
-		account.setLoggin(loggin);
-//		pm.makePersistent(account);
-//		Object objectId = JDOHelper.getObjectId(account);
-//		Object o = pm.getObjectById(objectId);
-		Query query = pm.newQuery("select from " + Account.class.getName());
-		Object result = query.execute();
-		if(result instanceof List){
-			List list = (List) result;
-			list.forEach(System.out::println);
-		}
-		return "success"+result;
-	}
+//	@RequestMapping("/jdo")
+//	@ResponseBody
+//	public String jdo_test(){
+//		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("Tutorial");
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Account account = new Account();
+//		account.setId("222");
+//		account.setName("account22");
+//		Loggin loggin = new Loggin();
+//		loggin.setLogin("333");
+//		loggin.setPassword("444");
+//		account.setLoggin(loggin);
+////		pm.makePersistent(account);
+////		Object objectId = JDOHelper.getObjectId(account);
+////		Object o = pm.getObjectById(objectId);
+//		Query query = pm.newQuery("select from " + Account.class.getName());
+//		Object result = query.execute();
+//		if(result instanceof List){
+//			List list = (List) result;
+//			list.forEach(System.out::println);
+//		}
+//		return "success"+result;
+//	}
+
 
 
 	@RequestMapping("/run")
@@ -171,8 +166,19 @@ public class TestController {
 	}
 
 
+	@Autowired
+	CallService callService;
 
-
+	/***
+	 * 测试多数据源情况下，事务处理器分配问题
+	 * @return
+     */
+	@RequestMapping("/tran")
+	@ResponseBody
+	public String transaction(){
+		callService.add();
+		return "suc";
+	}
 
 
 }
