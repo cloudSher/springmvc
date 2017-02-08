@@ -82,7 +82,10 @@ public class Main {
     }
 
 
-
+    public static void springContext(String beanName){
+        ClassPathXmlApplicationContext cxt = new ClassPathXmlApplicationContext("");
+        cxt.getBean(beanName);
+    }
 
 
 }

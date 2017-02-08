@@ -13,7 +13,6 @@
 
 
     <!--config mutil datasource-->
-
     <bean id="datasource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="username" value="${jdbc.username}"></property>
